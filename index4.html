@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exito Chat Interface</title>
+    <link rel="stylesheet" href="index4.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <img src="../src/logo.png" alt="Exito Logo" class="logo-img" />
+      </div>
+    </div>
+    <div class="sidepanel" id="sidepanel">
+      <div class="sidepanel-header">
+        <input
+          type="text"
+          class="search-bar"
+          id="search-bar"
+          placeholder="Search..."
+        />
+        <div class="icons">
+          <span class="icon-placeholder" id="theme-toggle-btn">&#9881;</span>
+          <span class="icon-placeholder">&#128100;</span>
+        </div>
+      </div>
+      <div class="chat-rooms">
+        <div class="chat-room" id="club-room">
+          <div class="logo-img">
+            <img src="../src/logo.png" alt="Exito Club Logo" />
+          </div>
+          <div class="room-info">
+            <div class="room-title">Exito Club</div>
+          </div>
+        </div>
+        <div class="chat-room" id="mag-tab">
+          <div class="logo-img">
+            <img src="../src/logo.png" alt="Exito Club Logo" />
+          </div>
+          <div class="room-info">
+            <div class="room-title">Exito Mag</div>
+          </div>
+        </div>
+        <div class="chat-room" id="save-message-room">
+          <div class="logo-img">
+            <img src="../src/logo.png" alt="Saved Messages Logo" />
+          </div>
+          <div class="room-info">
+            <div class="room-title">Saved Messages</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-container" id="chat-container">
+        <div class="chat-header" id="chat-header">
+    <button class="hamburger-menu-btn" id="hamburger-menu-btn">
+        <i class="fas fa-bars"></i> </button>
+    <img src="../src/logo.png" alt="Exito Header Logo" />
+    <h2>Exito Mag</h2>
+</div>
+    
+      <br />
+      <hr />
+      <div class="chat-messages" id="chat-messages"></div>
+      <div class="chat-input-area" id="chat-input-area">
+        <input
+          type="file"
+          id="media-input-all"
+          style="display: none"
+          multiple
+        />
+        <input
+          type="file"
+          id="media-input-gallery"
+          style="display: none"
+          multiple
+          accept="image/*,video/*"
+        />
+
+        <button class="media-options-btn" id="media-options-btn">
+          <i class="fas fa-paperclip"></i>
+        </button>
+
+        <div class="media-options-popup" id="media-options-popup">
+          <div class="option-item" id="upload-device-option">
+            <i class="fas fa-folder-open"></i> Upload from Device
+          </div>
+          <div class="option-item" id="select-gallery-option">
+            <i class="fas fa-image"></i> Select from Gallery
+          </div>
+        </div>
+
+        <input
+          type="text"
+          class="chat-input"
+          id="chat-input"
+          placeholder="Type a message..."
+        />
+
+        <button class="voice-record-btn visible" id="voice-record-btn">
+          <i class="fas fa-microphone"></i>
+        </button>
+
+        <button class="send-btn hidden" id="send-btn">
+          <img src="../src/logo.png" alt="Send" class="send-icon" />
+        </button>
+      </div>
+
+      <div class="message-options-popup" id="message-options-popup">
+        <div class="option-item" id="copy-message-option">
+          <i class="fas fa-copy"></i> Copy
+        </div>
+        <div class="option-item" id="delete-message-option">
+          <i class="fas fa-trash-alt"></i> Delete
+        </div>
+        <div class="option-item" id="save-message-to-room-option">
+          <i class="fas fa-bookmark"></i> Save Message
+        </div>
+      </div>
+    </div>
+    <script src="index4.js"></script>
+  </body>
+</html>

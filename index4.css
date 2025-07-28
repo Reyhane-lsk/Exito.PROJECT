@@ -1,0 +1,708 @@
+/* تنظیمات کلی */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(to bottom, #fff, #f6f7f8 80%);
+  height: 100vh;
+  overflow: hidden;
+  color: #222;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 90px;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: width 0.3s, background 0.3s;
+}
+.sidebar-logo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  margin-top: 60px;
+}
+
+.sidebar-logo .logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.sidebar-logo .logo-img:active {
+  transform: scale(0.8);
+}
+
+/* Sidepanel */
+.sidepanel {
+  position: fixed;
+  left: 90px;
+  top: 0;
+  width: 280px;
+  height: 100vh;
+  background: #f3f3f3;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.04);
+  transform: translateX(-100%);
+  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+}
+.sidepanel.open {
+  transform: translateX(0);
+}
+.sidepanel-header {
+  padding: 32px 20px 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.search-bar {
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: none;
+  background: #fff;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  color: #222;
+  transition: background 0.3s, color 0.3s;
+}
+/* Add this to your CSS */
+.hamburger-menu-btn {
+    display: none; /* Hidden by default on larger screens */
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #555; /* Or match your theme */
+    cursor: pointer;
+    padding: 5px;
+    margin-right: 10px; /* Space between hamburger and logo */
+    transition: color 0.3s;
+}
+
+body.dark-mode .hamburger-menu-btn {
+    color: #ccc;
+}
+
+
+.icons {
+  display: flex;
+  gap: 8px;
+  font-size: 22px;
+  color: #888;
+  justify-content: flex-start;
+}
+.icon-placeholder {
+  background: #e0e0e0;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.chat-rooms {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 0 20px;
+}
+.chat-room {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background 0.2s;
+}
+.chat-room.selected, .chat-room:hover {
+  background: #e9e9e9;
+  border-radius: 25px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.chat-rooms img {
+  background: #000;
+  color: #fff;
+  width: 30px;
+  border:solid #000000 2px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-left: 10px;
+  transition: background 0.3s, border-color 0.3s;
+}
+.room-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+  transition: color 0.3s;
+}
+
+/* Chat Container */
+.chat-container {
+  margin-left: 90px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  transition: margin-left 0.3s, background 0.3s;
+}
+.chat-container-shifted {
+  margin-left: 370px;
+}
+.chat-header {
+  padding: 32px 32px 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.chat-header img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 50%;
+  align-items: center;
+}
+.chat-header h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #222;
+  transition: color 0.3s;
+}
+.chat-messages {
+  flex: 1;
+  padding: 24px 32px 16px 32px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Unified Message Styles */
+.message {
+  max-width: 60%;
+  padding: 14px 18px;
+  border-radius: 18px;
+  font-size: 16px;
+  line-height: 1.5;
+  word-break: break-word;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  transition: background 0.3s, color 0.3s;
+  position: relative;
+}
+.message.selected-for-options {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.message.user {
+  background: #000;
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 6px;
+}
+.message.agent {
+  background: #f0f0f0;
+  color: #222;
+  align-self: flex-start;
+  border-bottom-left-radius: 6px;
+}
+.message.media img,
+.message.media audio,
+.message.media video {
+  max-width: 180px;
+  border-radius: 10px;
+  margin-top: 6px;
+}
+
+/* Chat Input Area */
+.chat-input-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 32px 24px 32px;
+  background: transparent;
+  border-top: 1px solid #eee;
+  transition: background 0.3s, border-color 0.3s;
+  position: relative;
+}
+.chat-input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  outline: none;
+  background: #fff;
+  color: #222;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Send and Voice Record Buttons */
+.send-btn, .voice-record-btn {
+  background: #000;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.3s, transform 0.3s;
+}
+.send-btn .send-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+.voice-record-btn i {
+  color: #fff;
+  font-size: 20px;
+}
+
+/* Classes for showing/hiding elements */
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transform: scale(0.5);
+}
+.visible {
+  opacity: 1;
+  pointer-events: auto;
+  position: static;
+  transform: scale(1);
+}
+
+/* Voice Recording Animation */
+.voice-record-btn.recording {
+  background-color: #ff4444;
+  animation: pulse 1s infinite alternate;
+}
+@keyframes pulse {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(1.1); opacity: 0.7; }
+}
+
+/* Style for the new media options button */
+.media-options-btn {
+  background: #e0e0e0;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 4px;
+  transition: background 0.2s, transform 0.2s;
+  position: relative;
+}
+.media-options-btn:active {
+  transform: scale(0.9);
+}
+
+/* Style for the media options pop-up */
+.media-options-popup {
+  position: absolute;
+  bottom: 60px;
+  left: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 10px 0;
+  z-index: 20;
+  display: none;
+  flex-direction: column;
+  min-width: 200px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.media-options-popup.open {
+  display: flex;
+}
+.media-options-popup .option-item {
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.3s;
+}
+.media-options-popup .option-item:hover {
+  background-color: #f0f0f0;
+}
+.media-options-popup .option-item i {
+  font-size: 18px;
+  color: #555;
+  transition: color 0.3s;
+}
+
+/* Message Options Pop-up (Copy, Delete, Save) */
+.message-options-popup {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 5px 0;
+  z-index: 25;
+  display: none;
+  flex-direction: column;
+}
+.message-options-popup.open {
+  display: flex;
+}
+.message-options-popup .option-item {
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.message-options-popup .option-item:hover {
+  background-color: #f0f0f0;
+}
+.message-options-popup .option-item i {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background: linear-gradient(to bottom, #1a1a1a, #2a2a2a 80%);
+  color: #f0f0f0;
+}
+
+body.dark-mode .sidebar {
+  background: #000000;
+}
+
+body.dark-mode .sidepanel {
+  background: #1f1f1f;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.4);
+}
+
+body.dark-mode .search-bar {
+  background: #333;
+  color: #f0f0f0;
+  border-color: #444;
+}
+
+body.dark-mode .icons {
+  color: #aaa;
+}
+
+body.dark-mode .icon-placeholder {
+  background: #3d3d3d;
+  color: #f0f0f0;
+}
+
+body.dark-mode .chat-room.selected,
+body.dark-mode .chat-room:hover {
+  background: #2b2b2b;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .chat-rooms img {
+  background: #f0f0f0;
+  border-color: #f0f0f0;
+}
+
+body.dark-mode .room-title {
+  color: #f0f0f0;
+}
+
+body.dark-mode .chat-header h2 {
+  color: #f0f0f0;
+}
+
+body.dark-mode .chat-input-area {
+  border-top: 1px solid #333;
+}
+
+body.dark-mode .chat-input {
+  background: #333;
+  color: #f0f0f0;
+  border: 1px solid #444;
+}
+
+body.dark-mode .message.user {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+body.dark-mode .message.agent {
+  background: #333;
+  color: #f0f0f0;
+}
+
+body.dark-mode .media-options-btn {
+  background: #3d3d3d;
+  color: #f0f0f0;
+}
+
+body.dark-mode .media-options-popup {
+  background-color: #2b2b2b;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .media-options-popup .option-item {
+  color: #f0f0f0;
+}
+
+body.dark-mode .media-options-popup .option-item:hover {
+  background-color: #3d3d3d;
+}
+
+body.dark-mode .media-options-popup .option-item i {
+  color: #aaa;
+}
+
+/* سایر استایل‌های حالت تاریک به‌درستی تنظیم شده‌اند… */
+
+/* Responsive Adjustments */
+
+/* Media Query for larger mobile devices (e.g., up to 900px) */
+@media (max-width: 900px) {
+  .sidepanel {
+      width: 280px; /* Keep original width for sidepanel */
+  }
+  .chat-container-shifted {
+      margin-left: 370px !important; /* Adjust margin based on sidebar (90px) + sidepanel (280px) */
+  }
+  .chat-header, .chat-messages, .chat-input-area {
+      padding-left: 20px; /* Slightly reduce padding */
+      padding-right: 20px;
+  }
+  .chat-header h2 {
+      font-size: 24px; /* Adjust header font size */
+  }
+  .message {
+      max-width: 70%; /* Allow messages to take more width */
+  }
+  .chat-input {
+      font-size: 15px; /* Adjust input font size */
+  }
+  .room-title {
+      font-size: 16px; /* Adjust room title font size */
+  }
+}
+
+/* Media Query for medium mobile devices (e.g., up to 600px, including 375px) */
+@media (max-width: 600px) {
+  /* Sidebar: Hide it completely or make it a "hamburger menu" trigger */
+  .sidebar {
+      width: 0; /* Sidebar becomes invisible */
+      display: none; /* Hide it completely */
+      /* If you want a hamburger menu icon on the left, you'd place it directly in the header or in the sidepanel */
+  }
+
+  /* Sidepanel: Make it full-width or near full-width and absolute/fixed, covering the chat */
+  .sidepanel {
+      left: 0; /* Start from the left edge */
+      width: 100%; /* Take full width */
+      max-width: 320px; /* Or a specific max-width like 320px for better UX on slightly larger phones */
+      transform: translateX(-100%); /* Start hidden */
+      box-shadow: 4px 0 10px rgba(0,0,0,0.2); /* More prominent shadow when open */
+      z-index: 100; /* Ensure it's on top of everything */
+  }
+  /* When sidepanel is open, it moves into view */
+  .sidepanel.open {
+      transform: translateX(0);
+  }
+
+  /* Chat Container: No fixed margin-left when sidepanel is hidden */
+  .chat-container {
+      margin-left: 0; /* Remove fixed margin, takes full width */
+      width: 100%;
+  }
+  /* When sidepanel opens, chat container doesn't shift, it stays full width */
+  .chat-container-shifted {
+      margin-left: 0 !important; /* Override previous shifts */
+  }
+
+  /* Adjust Chat Header for mobile */
+  .chat-header {
+      padding: 20px 15px 0 15px; /* Adjust padding for smaller screens */
+      gap: 10px;
+      align-items: center;
+      /* You might want to add a hamburger icon here to open the sidepanel */
+  }
+  .chat-header img {
+      width: 35px; /* Smaller logo in header */
+      height: 35px;
+  }
+  .chat-header h2 {
+      font-size: 22px; /* Smaller header title */
+  }
+
+  /* Chat Messages and Input Area padding */
+  .chat-messages, .chat-input-area {
+      padding: 15px 15px; /* Consistent padding */
+  }
+  .chat-input-area {
+      padding-bottom: 15px; /* Adjust bottom padding for input area */
+  }
+
+  /* Message bubbles */
+  .message {
+      max-width: 80%; /* Allow messages to take more width */
+      padding: 12px 16px; /* Slightly smaller padding */
+      font-size: 15px; /* Slightly smaller font size */
+  }
+
+  /* Chat input and buttons */
+  .chat-input {
+      padding: 10px 14px;
+      font-size: 15px;
+  }
+  .send-btn, .voice-record-btn {
+      width: 40px; /* Slightly smaller buttons */
+      height: 40px;
+  }
+  .send-btn .send-icon {
+      width: 20px;
+      height: 20px;
+  }
+  .voice-record-btn i {
+      font-size: 18px;
+  }
+  .media-options-btn {
+      width: 36px;
+      height: 36px;
+      font-size: 18px;
+      margin-right: 0px;
+  }
+
+  /* Room titles and icons in sidepanel */
+  .room-title {
+      font-size: 15px; /* Make room titles smaller */
+  }
+  .chat-rooms img {
+      width: 25px; /* Smaller chat room icons */
+      height: 25px;
+      margin-left: 5px;
+  }
+
+  /* Search bar in sidepanel */
+  .search-bar {
+      font-size: 14px;
+      padding: 8px 14px;
+  }
+  .icons {
+      font-size: 20px;
+  }
+  .icon-placeholder {
+      width: 32px;
+      height: 32px;
+  }
+
+  /* Media options popup positioning */
+  .media-options-popup {
+      bottom: 55px; /* Adjust based on input area height */
+      left: 10px; /* Closer to left edge */
+      min-width: 180px;
+  }
+  .media-options-popup .option-item {
+      padding: 10px 12px;
+      font-size: 14px;
+  }
+  .media-options-popup .option-item i {
+      font-size: 16px;
+  }
+
+  /* Message options popup */
+  .message-options-popup {
+      /* Consider adjusting its position if it overlaps too much */
+  }
+  .message-options-popup .option-item {
+      padding: 6px 12px;
+      font-size: 13px;
+  }
+  .message-options-popup .option-item i {
+      font-size: 14px;
+  }
+}
+
+/* Specific adjustments for 375px (or similar very small screens) */
+@media (max-width: 375px) {
+  .chat-header {
+      padding: 15px 10px 0 10px;
+  }
+  .chat-messages, .chat-input-area {
+      padding: 10px 10px;
+  }
+  .message {
+      max-width: 85%; /* Give even more width to messages */
+      padding: 10px 14px;
+      font-size: 14px;
+  }
+  .chat-input {
+      padding: 8px 12px;
+      font-size: 14px;
+  }
+  .send-btn, .voice-record-btn {
+      width: 38px;
+      height: 38px;
+  }
+  .media-options-btn {
+      width: 34px;
+      height: 34px;
+  }
+  .sidepanel {
+    width: 100%; /* Can take full width on very small screens */
+  }
+}
+
+/* Optional: Landscape mode for mobile devices */
+@media (max-height: 400px) and (orientation: landscape) {
+  .chat-messages {
+      padding-top: 5px;
+      padding-bottom: 5px;
+  }
+  .chat-input-area {
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .chat-header {
+      padding-top: 10px;
+      padding-bottom: 5px;
+  }
+  /* Further reductions if needed to prevent elements from getting too small */
+}
+@media (max-width: 600px) {
+    .hamburger-menu-btn {
+        display: block; /* Show hamburger button on small screens */
+    }
+    /* Adjust chat header alignment if needed due to new button */
+    .chat-header {
+        justify-content: flex-start; /* Align items to start */
+    }
+}
